@@ -94,6 +94,17 @@ public class LinkedList<Type>
             }
             return count;
         }
+       
+        static void Main(string[] args)
+        {
+            LinkedLink linkedList = new LinkedLink();
+            linkedList.start = new Vector(1);
+            linkedList.start.Next = new Vector(2);
+            linkedList.start.Next.Next = new Vector(3);
+            linkedList.start.Next.Next = new Vector(4);
+            linkedList.start.Next.Next = new Vector(5);
 
+            Vector lengthList = linkedList.lengthOfList();
+        }
     }
 }
