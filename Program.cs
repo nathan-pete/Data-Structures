@@ -1,14 +1,14 @@
 // Creating a LinkedIn list of type T
 //CountNum - return the number of items in the list 
 using System;
-public class LinkedList<Type>
+public class LinkedList<int>
 {
     private class Vector
     {
         public Type Value { get; set; }
         public Vector Next { get; set; }
 
-        public Vector(Type value)
+        public Vector(int value)
         {
             Value = value;
         }
@@ -17,7 +17,7 @@ public class LinkedList<Type>
         private Vector start; // head
         private Vector end; // tail 
 
-        public void addFirst(Type first)
+        public void addFirst(int first)
         {
             Vector vector = new Vector(first);
             Vector temporary = start;
@@ -31,7 +31,7 @@ public class LinkedList<Type>
             }
         }
 
-        public void AddLast(Type last)
+        public void AddLast(int last)
         {
             Vector vector = new Vector(last);
             if (countNum == 0)
