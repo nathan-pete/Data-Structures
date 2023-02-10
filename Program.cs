@@ -83,20 +83,17 @@ public class LinkedList<Type>
         }
 
 
-        public Type getRamdomNumber()
+        public int lengthOfList()
         {
-            if (countNum == 0)
-            {
-                throw new InvalidOperationException("list is empty");
-            }
-
-            int number = random.Next(countNum);
+            int count = 0;
             Vector current = start;
-            for (int i = 0; i < number; i++)
+            while (current != null)
             {
+                count++;
                 current = current.Next;
             }
-            return current.Value;
+            return count;
         }
+
     }
 }
