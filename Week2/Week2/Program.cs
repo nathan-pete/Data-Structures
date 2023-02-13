@@ -15,6 +15,7 @@ class Object
 class LinkedList
 {
     private Object start;
+    private Random random = new Random();
 
     public LinkedList()
     {
@@ -65,6 +66,17 @@ class LinkedList
         }
     }
 
+    public void PrintList()
+    {
+        Object current = start;
+        while (current != null)
+        {
+            Console.Write(current.value + " ");
+            current = current.next;
+        }
+        Console.WriteLine();
+    }
+
     public int Length()
     {
         int count = 0;
@@ -77,15 +89,30 @@ class LinkedList
         return count;
     }
 
-    public void PrintList()
+    public int getRamdomNumber()
     {
         Object current = start;
-        while (current != null)
+        if (current == null)
         {
-            Console.Write(current.value + " ");
-            current = current.next;
+            throw new InvalidOperationException("list is empty");
         }
-        Console.WriteLine();
+        else
+        {
+            int count = 0;
+            while (current != null)
+            {
+                current = current.next;
+                count++;
+            }
+
+            current = start;
+            int randomIndex = random.Next(count);
+            for (int i = 0; i < randomIndex; i++)
+            {
+                current = current.next;
+            }
+        }
+        return current.value;
     }
 }
 
@@ -100,17 +127,17 @@ class MainClass
         list.addValue(3);
         list.addValue(4);
         list.addValue(5);
-
+        Console.WriteLine("Random number:" + list.getRamdomNumber());
         Console.WriteLine("Linked list after adding elements:");
         list.PrintList();
+        Console.WriteLine("Linked list lenght after adding elements:" + list.lengthOfList());
 
         list.removeValue(3);
 
         Console.WriteLine("Linked list after removing an element:");
         list.PrintList();
-
-        Console.WriteLine("Length of the linked list: " + list.Length());
+        Console.WriteLine("Linked list lenght after removing elements:" + list.lengthOfList());
+        list.Length();
+        Console.WriteLine("Random int from LinkedList:" + list.getRamdomNumber());
     }
 }
-
-
