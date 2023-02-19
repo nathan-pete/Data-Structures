@@ -1,14 +1,11 @@
+begin = input("Begin? Please type 'y' or 'n': ")
 
-begin = input("Begin? Please type 'Yes' or 'No': ")
+if begin == "y":
 
-if begin == "Yes":
-    #
-    # print("To add a node to the beginning of the list, type 'add_first'")
-    # print("To add a node to the end of the list, type 'add_last'")
-    # print("To remove a node from the beginning of the list, type 'remove_first'")
-    # print("To remove a node from the end of the list, type 'remove_last'")
-    #
-    call = input("Call a Function: ")
+    print("To add a node to the beginning of the list, type 'add_first'")
+    print("To add a node to the end of the list, type 'add_last'")
+    print("To remove a node from the beginning of the list, type 'remove_first'")
+    print("To remove a node from the end of the list, type 'remove_last'")
 
 
     class Node:
@@ -24,7 +21,12 @@ if begin == "Yes":
             self.size = 0
 
         def add_first(self, data):
-            new_node = Node(data)
+            new_node = None
+            if self.length() == 0:
+                new_node = Node(1)
+            else:
+                new_node = Node(data)
+
             new_node.next = self.head
             self.head = new_node
 
@@ -70,41 +72,40 @@ if begin == "Yes":
                 current = current.next
             return count
 
-    if __name__ == '__main__':
-        linked_list = LinkedList()
-        linked_list.add_first(1)
-        linked_list.add_first(2)
-        linked_list.add_first(3)
-        linked_list.add_first(4)
-        linked_list.add_first(5)
 
-        length = linked_list.length()
-        print("Length of the linked list is: ", length)
+    otherlist = LinkedList()
 
-        while linked_list.head:
-            print(linked_list.head.data)
-            linked_list.head = linked_list.head.next
+    while True:
+        call = input("Call a Function: ")
 
-    if call == "clear":
-        LinkedList.clear()
-        print("List has been cleared")
+        if call == "clear":
+            otherlist.clear()
+            print("List has been cleared")
 
-    if call == "add_first":
-        LinkedList.add_first(self, "test")
-        LinkedList.length()
+        if call == "add_first":  # self       data
+            LinkedList.add_first(otherlist, input())
+            otherlist.length()
 
-    elif call == "add_last":
-        LinkedList.add_last()
-        LinkedList.length()
+        elif call == "add_last":
+            otherlist.add_last(input())
+            otherlist.length()
 
-    elif call == "remove_first":
-        LinkedList.remove_first()
-        LinkedList.length()
+        elif call == "remove_first":
+            otherlist.remove_first()
+            otherlist.length()
 
-    elif call == "remove_last":
-        LinkedList.remove_last()
-        LinkedList.length()
+        elif call == "remove_last":
+            otherlist.remove_last()
+            otherlist.length()
+
+        elif call == "exit":
+            break
+
 
 else:
     print("Exiting...")
     exit()
+
+while otherlist.head:
+    print(otherlist.head.data)
+    otherlist.head = otherlist.head.next
