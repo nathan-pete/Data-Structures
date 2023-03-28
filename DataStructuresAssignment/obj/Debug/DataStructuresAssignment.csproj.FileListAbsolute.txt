@@ -1,0 +1,22 @@
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.exe.config
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.exe
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.pdb
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.AssemblyReference.cache
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.Form1.resources
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.Properties.Resources.resources
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.GenerateResource.cache
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.CoreCompileInputs.cache
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.exe
+C:\Users\User\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.pdb
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.exe.config
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.exe
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.pdb
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.AssemblyReference.cache
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.Form1.resources
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.Properties.Resources.resources
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.GenerateResource.cache
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.CoreCompileInputs.cache
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.exe
+C:\Users\User\DATA STRUCTURES\DataStructuresAssignment\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.pdb
