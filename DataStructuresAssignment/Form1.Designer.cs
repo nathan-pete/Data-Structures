@@ -109,6 +109,7 @@
             this.RemoveRowButton.TabIndex = 6;
             this.RemoveRowButton.Text = "Remove row";
             this.RemoveRowButton.UseVisualStyleBackColor = true;
+            this.RemoveRowButton.Click += new System.EventHandler(this.RemoveRowButton_Click);
             // 
             // Form1
             // 
