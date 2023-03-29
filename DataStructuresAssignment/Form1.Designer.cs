@@ -35,7 +35,7 @@
             this.searchSongName = new System.Windows.Forms.Label();
             this.AddRowButton = new System.Windows.Forms.Button();
             this.RemoveRowButton = new System.Windows.Forms.Button();
-            this.MergeSortButton = new System.Windows.Forms.Button();
+            this.SortByArtistButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,17 +112,15 @@
             this.RemoveRowButton.UseVisualStyleBackColor = true;
             this.RemoveRowButton.Click += new System.EventHandler(this.RemoveRowButton_Click);
             // 
-            // MergeSortButton
+            // SortByArtistButton
             // 
-            this.MergeSortButton.BackColor = System.Drawing.Color.DarkOrchid;
-            this.MergeSortButton.Font = new System.Drawing.Font("Circular Std Black", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MergeSortButton.ForeColor = System.Drawing.Color.White;
-            this.MergeSortButton.Location = new System.Drawing.Point(817, 230);
-            this.MergeSortButton.Name = "MergeSortButton";
-            this.MergeSortButton.Size = new System.Drawing.Size(241, 56);
-            this.MergeSortButton.TabIndex = 7;
-            this.MergeSortButton.Text = "Streams Merge Sort";
-            this.MergeSortButton.UseVisualStyleBackColor = false;
+            this.SortByArtistButton.Location = new System.Drawing.Point(816, 250);
+            this.SortByArtistButton.Name = "SortByArtistButton";
+            this.SortByArtistButton.Size = new System.Drawing.Size(171, 57);
+            this.SortByArtistButton.TabIndex = 7;
+            this.SortByArtistButton.Text = "SortByArtistButton";
+            this.SortByArtistButton.UseVisualStyleBackColor = true;
+            this.SortByArtistButton.Click += new System.EventHandler(this.SortByArtistButton_Click);
             // 
             // Form1
             // 
@@ -130,7 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1478, 644);
-            this.Controls.Add(this.MergeSortButton);
+            this.Controls.Add(this.SortByArtistButton);
             this.Controls.Add(this.RemoveRowButton);
             this.Controls.Add(this.AddRowButton);
             this.Controls.Add(this.searchSongName);
@@ -157,7 +155,7 @@
         private System.Windows.Forms.Label searchSongName;
         private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button RemoveRowButton;
-        private System.Windows.Forms.Button MergeSortButton;
+        private System.Windows.Forms.Button SortByArtistButton;
     }
 }
 

@@ -29,6 +29,8 @@ namespace DataStructuresAssignment
             dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
             dataGridView1.Columns.Add("Release Date", "Release Date");
 
+            data = ShellSort(data);
+
             dataGridView1.Rows.Clear();
             foreach (string[] row in data)
             {
@@ -131,7 +133,6 @@ namespace DataStructuresAssignment
 
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the row index
                 int selectedIndex = dataGridView1.SelectedRows[0].Index;
                 dataGridView1.Rows.RemoveAt(selectedIndex);
             }
@@ -140,6 +141,51 @@ namespace DataStructuresAssignment
                 MessageBox.Show("Please select a row to remove.");
             }
         }
-    }
+        private void SortByArtistButton_Click(object sender, EventArgs e)
+        {
+            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
+            List<string[]> data = LoadCSV(filePath);
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("Song", "Song");
+            dataGridView1.Columns.Add("Artist", "Artist");
+            dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
+            dataGridView1.Columns.Add("Release Date", "Release Date");
+
+            data = ShellSort(data);
+
+            foreach (string[] row in data)
+            {
+                dataGridView1.Rows.Add(row);
+            }
         }
+        private List<string[]> ShellSort(List<string[]> data)
+        {
+            int n = data.Count;
+            int gap = n / 2;
+
+            while (gap > 0)
+            {
+                for (int i = gap; i < n; i++)
+                {
+                    string[] temp = data[i];
+                    int j = i;
+
+                    while (j >= gap && string.Compare(data[j - gap][1], temp[1], StringComparison.OrdinalIgnoreCase) > 0)
+                    {
+                        data[j] = data[j - gap];
+                        j -= gap;
+                    }
+
+                    data[j] = temp;
+                }
+
+                gap /= 2;
+            }
+
+            return data;
+        }
+    }
+}
 
