@@ -114,12 +114,15 @@
             // 
             // SortByArtistButton
             // 
-            this.SortByArtistButton.Location = new System.Drawing.Point(816, 250);
+            this.SortByArtistButton.BackColor = System.Drawing.Color.DarkOrchid;
+            this.SortByArtistButton.Font = new System.Drawing.Font("Circular Std Black", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortByArtistButton.ForeColor = System.Drawing.Color.White;
+            this.SortByArtistButton.Location = new System.Drawing.Point(816, 226);
             this.SortByArtistButton.Name = "SortByArtistButton";
             this.SortByArtistButton.Size = new System.Drawing.Size(171, 57);
             this.SortByArtistButton.TabIndex = 7;
-            this.SortByArtistButton.Text = "SortByArtistButton";
-            this.SortByArtistButton.UseVisualStyleBackColor = true;
+            this.SortByArtistButton.Text = "Sort for Artist";
+            this.SortByArtistButton.UseVisualStyleBackColor = false;
             this.SortByArtistButton.Click += new System.EventHandler(this.SortByArtistButton_Click);
             // 
             // Form1
