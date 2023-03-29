@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DataStructuresAssignment
 {
@@ -165,6 +166,10 @@ namespace DataStructuresAssignment
             int n = data.Count;
             int gap = n / 2;
 
+            // Start the timer
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             while (gap > 0)
             {
                 for (int i = gap; i < n; i++)
@@ -183,6 +188,12 @@ namespace DataStructuresAssignment
 
                 gap /= 2;
             }
+
+            // Stop the timer and calculate the elapsed time
+            stopwatch.Stop();
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            Console.WriteLine($"ShellSort took {elapsedTime.TotalMilliseconds} milliseconds");
 
             return data;
         }
