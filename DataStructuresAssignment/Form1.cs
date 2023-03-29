@@ -30,7 +30,7 @@ namespace DataStructuresAssignment
             dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
             dataGridView1.Columns.Add("Release Date", "Release Date");
 
-            data = ShellSort(data);
+            //data = ShellSort(data);
 
             dataGridView1.Rows.Clear();
             foreach (string[] row in data)
@@ -154,14 +154,14 @@ namespace DataStructuresAssignment
             dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
             dataGridView1.Columns.Add("Release Date", "Release Date");
 
-            data = ShellSort(data);
+            //data = ShellSort(data);
 
             foreach (string[] row in data)
             {
                 dataGridView1.Rows.Add(row);
             }
         }
-        private List<string[]> ShellSort(List<string[]> data)
+        /*private List<string[]> ShellSort(List<string[]> data)
         {
             int n = data.Count;
             int gap = n / 2;
@@ -196,7 +196,7 @@ namespace DataStructuresAssignment
             Console.WriteLine($"ShellSort took {elapsedTime.TotalMilliseconds} milliseconds");
 
             return data;
-        }
+        }*/
     }
 }
 
