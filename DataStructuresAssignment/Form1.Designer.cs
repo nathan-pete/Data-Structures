@@ -35,7 +35,6 @@
             this.searchSongName = new System.Windows.Forms.Label();
             this.AddRowButton = new System.Windows.Forms.Button();
             this.RemoveRowButton = new System.Windows.Forms.Button();
-            this.SortByArtistButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,25 +108,12 @@
             this.RemoveRowButton.Text = "Remove row";
             this.RemoveRowButton.UseVisualStyleBackColor = true;
             // 
-            // SortByArtistButton
-            // 
-            this.SortByArtistButton.BackColor = System.Drawing.Color.DarkOrchid;
-            this.SortByArtistButton.Font = new System.Drawing.Font("Circular Std Black", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortByArtistButton.ForeColor = System.Drawing.Color.White;
-            this.SortByArtistButton.Location = new System.Drawing.Point(816, 226);
-            this.SortByArtistButton.Name = "SortByArtistButton";
-            this.SortByArtistButton.Size = new System.Drawing.Size(171, 57);
-            this.SortByArtistButton.TabIndex = 7;
-            this.SortByArtistButton.Text = "Sort for Artist";
-            this.SortByArtistButton.UseVisualStyleBackColor = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1478, 644);
-            this.Controls.Add(this.SortByArtistButton);
             this.Controls.Add(this.RemoveRowButton);
             this.Controls.Add(this.AddRowButton);
             this.Controls.Add(this.searchSongName);
@@ -153,7 +139,6 @@
         private System.Windows.Forms.Label searchSongName;
         private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button RemoveRowButton;
-        private System.Windows.Forms.Button SortByArtistButton;
     }
 }
 
