@@ -17,6 +17,7 @@ namespace DataStructuresAssignment
     public partial class Form1 : Form
 
     {
+        private Hashtable table;
         public Form1()
         {
             InitializeComponent();
@@ -163,82 +164,42 @@ namespace DataStructuresAssignment
                 dataGridView1.Rows.Add(row);
             }
         }
-        /*private List<string[]> ShellSort(List<string[]> data)
+
+        private void CreateHashTable(List<string[]> data)
         {
-            int n = data.Count;
-            int gap = n / 2;
+            int tableSize = data.Count;
+            Hashtable table = new Hashtable(tableSize);
 
-            // Start the timer
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            while (gap > 0)
-            {
-                for (int i = gap; i < n; i++)
-                {
-                    string[] temp = data[i];
-                    int j = i;
-
-                    while (j >= gap && string.Compare(data[j - gap][1], temp[1], StringComparison.OrdinalIgnoreCase) > 0)
-                    {
-                        data[j] = data[j - gap];
-                        j -= gap;
-                    }
-
-                    data[j] = temp;
-                }
-
-                gap /= 2;
-            }
-
-            // Stop the timer and calculate the elapsed time
-            stopwatch.Stop();
-            TimeSpan elapsedTime = stopwatch.Elapsed;
-
-            Console.WriteLine($"ShellSort took {elapsedTime.TotalMilliseconds} milliseconds");
-
-            return data;
-        }*/
- 
-
-        private void HashTable(List<string[]> data)
-        {
-            private int tableSize = data.Length;
-            Program Program = new Program();
-            private Hashtable table;
-            Program.table = new Hashtable(tableSize);
-
-            for (int i = 0; i < data.Length; i++) 
+            for (int i = 0; i < data.Count; i++) 
             { 
-                string[] fields = data[i].Split(',');
+                string[] fields = data[i];
                 string key = fields[0]; 
-                int hash = Program.GetHash(key); 
+                int hash = GetHash(key, tableSize); 
 
                 //Collision control
-                while (Program.table.ContainsKey(hash)) // Check if the hash value is already in the table
+                while (table.ContainsKey(hash)) // Check if the hash value is already in the table
                 { 
                     hash = (hash + 1) % tableSize; // If the hash value is in the table look for the next free spot 
                 }
 
-                Program.table[hash] = data[i]; // Add key-value pair to the hash table
+                table[hash] = data[i]; // Add key-value pair to the hash table
             }
         }
 
-        private int GetHash(string key) 
+        private int GetHash(string key, int tableSize) 
         {
-            int hash = 0; 
-            foreach (char k in key) // Loop through each character in the key
-            { 
-                SHA1 sha = SHA1.Create();
-                byte[] hashBytes = sha.ComputeHash(Encoding.UTF8.GetBytes(key)); 
-                hash = BitConverter.ToInt32(hashBytes, 0); // Covert to int32              
+            int hash = 0;
+            for (int i = 0; i < key.Length; i++) // Loop through each character in the key
+            {
+                hash = (hash << 5) + hash + key[i];
             }
             return Math.Abs(hash) % tableSize; // Ensure that the hash value falls within the range of the table size
         }
 
         private string[] HashTableSearch(List<string[]> data, string searchTerm)
         {
-            int searchHash = GetHash(searchTerm); // Get the hash value for the string
+            int tableSize = data.Count;
+            int searchHash = GetHash(searchTerm, tableSize); // Get the hash value for the string
 
             // Finding the key
             while (table.ContainsKey(searchHash)) // Check if the hash value is in the table
@@ -246,7 +207,8 @@ namespace DataStructuresAssignment
                 string[] fields = ((string)table[searchHash]).Split(','); 
                 if (fields[0] == searchTerm)  // Check if the first field matches the search string !!!!!!!!!!!!!!!!!! 
                 { 
-                    return table[searchHash]; 
+                    string[] result = (string[])table[searchHash];
+                    return  result; 
                 }
                 else
                 {
@@ -282,96 +244,6 @@ namespace DataStructuresAssignment
                 }
             }
         }
-
-        private void AddRowButton_Click(object sender, EventArgs e)
-        {
-
-            string[] newRow = new string[] { "New Song", "New Artist", "0.5", "2023-03-24" };
-            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-            List<string[]> data = LoadCSV(filePath);
-            data.Add(newRow);
-
-
-            dataGridView1.Rows.Clear();
-            foreach (string[] row in data)
-            {
-                dataGridView1.Rows.Add(row);
-            }
-
-            using (var writer = new StreamWriter(filePath, append: true))
-            {
-                writer.WriteLine(string.Join(",", newRow));
-            }
-        }
-
-        private void RemoveRowButton_Click(object sender, EventArgs e)
-        {
-
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                int selectedIndex = dataGridView1.SelectedRows[0].Index;
-                dataGridView1.Rows.RemoveAt(selectedIndex);
-            }
-            else
-            {
-                MessageBox.Show("Please select a row to remove.");
-            }
-        }
-        private void SortByArtistButton_Click(object sender, EventArgs e)
-        {
-            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-            List<string[]> data = LoadCSV(filePath);
-
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("Song", "Song");
-            dataGridView1.Columns.Add("Artist", "Artist");
-            dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
-            dataGridView1.Columns.Add("Release Date", "Release Date");
-
-            //data = ShellSort(data);
-
-            foreach (string[] row in data)
-            {
-                dataGridView1.Rows.Add(row);
-            }
-        }
-        /*private List<string[]> ShellSort(List<string[]> data)
-        {
-            int n = data.Count;
-            int gap = n / 2;
-
-            // Start the timer
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            while (gap > 0)
-            {
-                for (int i = gap; i < n; i++)
-                {
-                    string[] temp = data[i];
-                    int j = i;
-
-                    while (j >= gap && string.Compare(data[j - gap][1], temp[1], StringComparison.OrdinalIgnoreCase) > 0)
-                    {
-                        data[j] = data[j - gap];
-                        j -= gap;
-                    }
-
-                    data[j] = temp;
-                }
-
-                gap /= 2;
-            }
-
-            // Stop the timer and calculate the elapsed time
-            stopwatch.Stop();
-            TimeSpan elapsedTime = stopwatch.Elapsed;
-
-            Console.WriteLine($"ShellSort took {elapsedTime.TotalMilliseconds} milliseconds");
-
-            return data;
-        }*/
 
         private void BubbleSort(List<string[]> data)
         {
