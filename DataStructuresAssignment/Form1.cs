@@ -12,122 +12,109 @@ using System.Diagnostics;
 
 namespace DataStructuresAssignment
 {
-    public partial class Form1 : Form
-
-    {
-        public Form1()
+        public partial class Form1 : Form
         {
-            InitializeComponent();
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-            List<string[]> data = LoadCSV(filePath);
+            private List<string[]> data;
 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.Columns.Add("Song", "Song");
-            dataGridView1.Columns.Add("Artist", "Artist");
-            dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
-            dataGridView1.Columns.Add("Release Date", "Release Date");
-
-
-            dataGridView1.Rows.Clear();
-            foreach (string[] row in data)
+            public Form1()
             {
-                dataGridView1.Rows.Add(row);
-            }
-        }
-        private List<string[]> LoadCSV(string filePath)
-        {
-            List<string[]> data = new List<string[]>();
-            using (var reader = new StreamReader(filePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    string[] values = line.Split(',');
-                    data.Add(values);
-                }
+                InitializeComponent();
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.DataSource = data;
             }
 
-            // Sort the data by the song name
-            data.Sort((x, y) => string.Compare(x[0], y[0], StringComparison.OrdinalIgnoreCase));
-
-            return data;
-        }
-
-        private void SearchButton_Click(object sender, EventArgs e)
-        {
-            string searchTerm = SearchTextBox.Text.Trim();
-
-            if (!string.IsNullOrEmpty(searchTerm))
+            private void Form1_Load(object sender, EventArgs e)
             {
                 string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
+                data = LoadCSV(filePath);
+            }
+
+            private List<string[]> LoadCSV(string filePath)
+            {
+                List<string[]> data = new List<string[]>();
+                using (var reader = new StreamReader(filePath))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+                        string[] values = line.Split(',');
+                        data.Add(values);
+                    }
+                }
+                return data;
+            }
+
+            private void SearchButton_Click(object sender, EventArgs e)
+            {
+                string searchTerm = SearchTextBox.Text.Trim();
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    string[] result = BinarySearch(data, searchTerm);
+
+                    if (result != null)
+                    {
+                        MessageBox.Show($"Song: {result[0]}\nArtist: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not found");
+                    }
+                }
+            }
+
+            private string[] BinarySearch(List<string[]> data, string searchTerm)
+            {
+                string[] result = null;
+
+                int left = 0;
+                int right = data.Count - 1;
+
+                while (left <= right)
+                {
+                    int mid = (left + right) / 2;
+                    int compareResult = string.Compare(data[mid][0], searchTerm, StringComparison.OrdinalIgnoreCase);
+
+                    if (compareResult == 0)
+                    {
+                        result = data[mid];
+                        break;
+                    }
+                    else if (compareResult < 0)
+                    {
+                        left = mid + 1;
+                    }
+                    else
+                    {
+                        right = mid - 1;
+                    }
+                }
+
+                return result;
+            }
+            private void AddRowButton_Click(object sender, EventArgs e)
+            {
+                string[] newRow = new string[] { "New Song", "New Artist", "0.5", "2023-03-24" };
+                string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
+
                 List<string[]> data = LoadCSV(filePath);
 
-                string[] result = BinarySearch(data, searchTerm);
+                data.Add(newRow);
 
-                if (result != null)
+                // Sort the data by song name
+                data.Sort((x, y) => string.Compare(x[0], y[0], StringComparison.OrdinalIgnoreCase));
+
+                dataGridView1.Rows.Clear();
+                foreach (string[] row in data)
                 {
-                    MessageBox.Show($"Song: {result[0]}\nArtist: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
+                    dataGridView1.Rows.Add(row);
                 }
-                else
-                {
-                    MessageBox.Show("Not found");
-                }
-            }
-        }
 
-        private string[] BinarySearch(List<string[]> data, string searchTerm)
-        {
-            string[] result = null;
-
-            int left = 0;
-            int right = data.Count - 1;
-
-            while (left <= right)
-            {
-                int mid = (left + right) / 2;
-                int compareResult = string.Compare(data[mid][0], searchTerm, StringComparison.OrdinalIgnoreCase);
-
-                if (compareResult == 0)
+                using (var writer = new StreamWriter(filePath, append: true))
                 {
-                    result = data[mid];
-                    break;
-                }
-                else if (compareResult < 0)
-                {
-                    left = mid + 1;
-                }
-                else
-                {
-                    right = mid - 1;
+                    writer.WriteLine(string.Join(",", newRow));
                 }
             }
-
-            return result;
-        }
-        private void AddRowButton_Click(object sender, EventArgs e)
-        {
-
-            string[] newRow = new string[] { "New Song", "New Artist", "0.5", "2023-03-24" };
-            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-            List<string[]> data = LoadCSV(filePath);
-            data.Add(newRow);
-
-
-            dataGridView1.Rows.Clear();
-            foreach (string[] row in data)
-            {
-                dataGridView1.Rows.Add(row);
-            }
-
-            using (var writer = new StreamWriter(filePath, append: true))
-            {
-                writer.WriteLine(string.Join(",", newRow));
-            }
-        }
-
         private void RemoveRowButton_Click(object sender, EventArgs e)
         {
 
@@ -141,6 +128,11 @@ namespace DataStructuresAssignment
                 MessageBox.Show("Please select a row to remove.");
             }
         }
+
+
+
+
+
 
 
 

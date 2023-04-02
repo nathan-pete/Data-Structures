@@ -28,25 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.mainLabel = new System.Windows.Forms.Label();
             this.SearchButton = new System.Windows.Forms.Button();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.searchSongName = new System.Windows.Forms.Label();
             this.AddRowButton = new System.Windows.Forms.Button();
             this.RemoveRowButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 91);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(728, 320);
-            this.dataGridView1.TabIndex = 0;
             // 
             // mainLabel
             // 
@@ -108,19 +98,29 @@
             this.RemoveRowButton.Text = "Remove row";
             this.RemoveRowButton.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(45, 91);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(679, 311);
+            this.dataGridView1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1478, 644);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.RemoveRowButton);
             this.Controls.Add(this.AddRowButton);
             this.Controls.Add(this.searchSongName);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.mainLabel);
-            this.Controls.Add(this.dataGridView1);
             this.ForeColor = System.Drawing.Color.DarkOrchid;
             this.Name = "Form1";
             this.Text = "Home page ";
@@ -131,14 +131,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label mainLabel;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.Label searchSongName;
         private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button RemoveRowButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
