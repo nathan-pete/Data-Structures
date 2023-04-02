@@ -159,6 +159,8 @@
         private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button RemoveRowButton;
         private System.Windows.Forms.Button SortByArtistButton;
+        private System.Windows.Forms.Button HashSearchButton;
+        private System.Windows.Forms.TextBox HashSsearchTextBox;
     }
 }
 
