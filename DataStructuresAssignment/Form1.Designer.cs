@@ -71,7 +71,6 @@
             this.SearchButton.TabIndex = 2;
             this.SearchButton.Text = "Song Binary Search";
             this.SearchButton.UseVisualStyleBackColor = false;
-            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // SearchTextBox
             // 
@@ -100,7 +99,6 @@
             this.AddRowButton.TabIndex = 5;
             this.AddRowButton.Text = "Add row";
             this.AddRowButton.UseVisualStyleBackColor = true;
-            this.AddRowButton.Click += new System.EventHandler(this.AddRowButton_Click);
             // 
             // RemoveRowButton
             // 
@@ -110,7 +108,6 @@
             this.RemoveRowButton.TabIndex = 6;
             this.RemoveRowButton.Text = "Remove row";
             this.RemoveRowButton.UseVisualStyleBackColor = true;
-            this.RemoveRowButton.Click += new System.EventHandler(this.RemoveRowButton_Click);
             // 
             // SortByArtistButton
             // 
@@ -123,7 +120,6 @@
             this.SortByArtistButton.TabIndex = 7;
             this.SortByArtistButton.Text = "Sort for Artist";
             this.SortByArtistButton.UseVisualStyleBackColor = false;
-            this.SortByArtistButton.Click += new System.EventHandler(this.SortByArtistButton_Click);
             // 
             // Form1
             // 
@@ -142,7 +138,6 @@
             this.ForeColor = System.Drawing.Color.DarkOrchid;
             this.Name = "Form1";
             this.Text = "Home page ";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
