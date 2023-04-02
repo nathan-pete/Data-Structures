@@ -198,25 +198,6 @@ namespace DataStructuresAssignment
             return data;
         }*/
     }
-
-
-        private void BubbleSort(List<string[]> data)
-        {
-            int n = data.Count;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (float.Parse(data[j][2]) > float.Parse(data[j + 1][2]))
-                    {
-                        // swap data[j] and data[j+1]
-                        string[] temp = data[j];
-                        data[j] = data[j + 1];
-                        data[j + 1] = temp;
-                    }
-                }
-            }
-        }
-    }
+}
 
 
