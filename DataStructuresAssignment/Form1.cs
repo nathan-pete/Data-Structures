@@ -197,7 +197,6 @@ namespace DataStructuresAssignment
 
             return data;
         }*/
-    }
 
         private void BubbleSort(List<string[]> data)
         {
@@ -214,6 +213,25 @@ namespace DataStructuresAssignment
                         data[j + 1] = temp;
                     }
                 }
+            }
+        }
+        private void SortByStreamsButton_Click(object sender, EventArgs e)
+        {
+            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
+            List<string[]> data = LoadCSV(filePath);
+
+            BubbleSort(data);
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("Song", "Song");
+            dataGridView1.Columns.Add("Artist", "Artist");
+            dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
+            dataGridView1.Columns.Add("Release Date", "Release Date");
+
+            foreach (string[] row in data)
+            {
+                dataGridView1.Rows.Add(row);
             }
         }
     }
