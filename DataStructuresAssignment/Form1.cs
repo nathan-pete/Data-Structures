@@ -200,6 +200,7 @@ namespace DataStructuresAssignment
         {
             int tableSize = data.Count;
             int searchHash = GetHash(searchTerm, tableSize); // Get the hash value for the string
+            string[] result = null;
 
             // Finding the key
             while (table.ContainsKey(searchHash)) // Check if the hash value is in the table
@@ -207,7 +208,7 @@ namespace DataStructuresAssignment
                 string[] fields = ((string)table[searchHash]).Split(','); 
                 if (fields[0] == searchTerm)  // Check if the first field matches the search string !!!!!!!!!!!!!!!!!! 
                 { 
-                    string[] result = (string[])table[searchHash];
+                    result = (string[])table[searchHash];
                     return  result; 
                 }
                 else
@@ -222,28 +223,6 @@ namespace DataStructuresAssignment
 // TODO: Figure out what to do with the hash tabel intialization 
 // TODO: See if the button for showing different fields of the result works
 // TODO: Make the correspesponding information to the search be shown as a result (song search shows artist too)
-
-        private void HashSearchButton_Click(object sender, EventArgs e)
-        {
-            string searchTerm = SearchTextBox.Text.Trim();
-
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-                List<string[]> data = LoadCSV(filePath);
-
-                string[] result = HashTableSearch(data, searchTerm);
-
-                if (result != null)
-                {
-                    MessageBox.Show($"Artist: {result[0]}\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
-                }
-                else
-                {
-                    MessageBox.Show("Not found");
-                }
-            }
-        }
 
         private void BubbleSort(List<string[]> data)
         {
@@ -279,6 +258,28 @@ namespace DataStructuresAssignment
             foreach (string[] row in data)
             {
                 dataGridView1.Rows.Add(row);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string searchTerm = SearchTextBox.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
+                List<string[]> data = LoadCSV(filePath);
+
+                string[] result = HashTableSearch(data, searchTerm);
+
+                if (result != null)
+                {
+                    MessageBox.Show($"Artist: {result[0]}"); //\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
+                }
+                else
+                {
+                    MessageBox.Show("Not found");
+                }
             }
         }
     }
