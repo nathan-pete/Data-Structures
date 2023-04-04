@@ -145,7 +145,45 @@ namespace DataStructuresAssignment
                 MessageBox.Show("Please select a row to remove.");
             }
         }
-        private void SortByArtistButton_Click(object sender, EventArgs e)
+        private void BucketSortButton_Click(object sender, EventArgs e)
+        {
+            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
+            List<string[]> data = LoadCSV(filePath);
+
+            // Create a dictionary to store the buckets
+            Dictionary<string, List<string[]>> buckets = new Dictionary<string, List<string[]>>();
+
+            // Iterate over each row in the data and add it to the appropriate bucket
+            foreach (string[] row in data)
+            {
+                string artist = row[1];
+                if (buckets.ContainsKey(artist))
+                {
+                    buckets[artist].Add(row);
+                }
+                else
+                {
+                    buckets.Add(artist, new List<string[]> { row });
+                }
+            }
+
+            // Sort the buckets by artist name
+            List<string[]> sortedData = new List<string[]>();
+            foreach (var bucket in buckets.OrderBy(x => x.Key))
+            {
+                sortedData.AddRange(bucket.Value);
+            }
+
+            // Clear the data grid view and add the sorted data
+            dataGridView1.Rows.Clear();
+            foreach (string[] row in sortedData)
+            {
+                dataGridView1.Rows.Add(row);
+            }
+        }
+
+
+        /*private void SortByArtistButton_Click(object sender, EventArgs e)
         {
             string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
             List<string[]> data = LoadCSV(filePath);
@@ -164,7 +202,7 @@ namespace DataStructuresAssignment
                 dataGridView1.Rows.Add(row);
             }
         }
-
+        */
         private void CreateHashTable(List<string[]> data)
         {
             int tableSize = data.Count;
