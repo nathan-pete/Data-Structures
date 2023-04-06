@@ -60,41 +60,6 @@ namespace DataStructuresAssignment
         }
 
 
-        /* private double JumpSearch(double[] thirdColumnFloats, double searchTerm)
-        {
-            int dataSize = thirdColumnFloats.Length;
-            int stepSize = (int)Math.Sqrt(dataSize);
-            double prevStep = 0;
-            double result = 0;
-
-            while (thirdColumnFloats[Math.Min(stepSize, dataSize) - 1] < searchTerm)
-            {
-                prevStep = stepSize;
-                stepSize += (int)Math.Sqrt(dataSize);
-                if (prevStep >= dataSize)
-                {
-                    return result;
-                }
-            }
-            
-            for (double i = prevStep; i < searchTerm; i++)
-            {
-                prevStep++;
-                double p = Math.Min(stepSize, dataSize);
-                if(prevStep == p)
-                {
-                    return result;
-                } 
-                
-                if (prevStep == searchTerm)
-                {
-                    result = prevStep;
-                }
-            }
-
-            return result; 
-        } */
-
         private void SearchBwutton_Click(object sender, EventArgs e)
         {
             string searchTerm = SearchTextBox.Text.Trim();
@@ -217,54 +182,11 @@ namespace DataStructuresAssignment
             }
         }
 
-
-        /*private void SortByArtistButton_Click(object sender, EventArgs e)
-        {
-            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-            List<string[]> data = LoadCSV(filePath);
-
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("Song", "Song");
-            dataGridView1.Columns.Add("Artist", "Artist");
-            dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
-            dataGridView1.Columns.Add("Release Date", "Release Date");
-
-            //data = ShellSort(data);
-
-            foreach (string[] row in data)
-            {
-                dataGridView1.Rows.Add(row);
-            }
-        }
-        */
-
-
-
-        private void BubbleSort(List<string[]> data)
-        {
-            int n = data.Count;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (float.Parse(data[j][2]) > float.Parse(data[j + 1][2]))
-                    {
-                        // swap data[j] and data[j+1]
-                        string[] temp = data[j];
-                        data[j] = data[j + 1];
-                        data[j + 1] = temp;
-                    }
-                }
-            }
-        }
         private void SortByStreamsButton_Click(object sender, EventArgs e)
         {
             string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
             List<string[]> data = LoadCSV(filePath);
 
-            BubbleSort(data);
-
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("Song", "Song");
@@ -278,35 +200,8 @@ namespace DataStructuresAssignment
             }
         }
 
-        /*private void JumpSearchButton_Click(object sender, EventArgs e)
-        {
-            string searchTerm = JumpSearchTextBox.Text.Trim();
 
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-                List<string> thirdColumnValues = LoadThirdColumn(filePath);
-                List<string[]> data = LoadCSV(filePath);
-                List<string> result = LinearSearch(data, thirdColumnValues, searchTerm);
-                
-                if (result != null)
-                {
-                    MessageBox.Show($"Song: {result[0]}\nArtist: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");; //\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
-                }
-                else
-                {
-                    MessageBox.Show("Not found");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid number");
-            }
-        }*/
-
-
-
-        private List<string> LoadThirdColumn(string filePath)
+        /* private List<string> LoadThirdColumn(string filePath)
         {
             List<string> thirdColumnValues = new List<string>();
             using (var reader = new StreamReader(filePath))
@@ -327,11 +222,11 @@ namespace DataStructuresAssignment
             }
 
             return thirdColumnValues;
-        }
-        private void btnSearch_Click(object sender, EventArgs e)
+        } */
+
+        private void LenearSearch_Click(object sender, EventArgs e)
         {
-            string searchTerm = JumpSearchTextBox.Text;
-            //bool isFound = false;
+            string searchTerm = LinearSearchTextBox.Text;
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {

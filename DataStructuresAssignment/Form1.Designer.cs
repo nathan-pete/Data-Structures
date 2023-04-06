@@ -36,8 +36,8 @@
             this.AddRowButton = new System.Windows.Forms.Button();
             this.RemoveRowButton = new System.Windows.Forms.Button();
             this.JumpSearchButton = new System.Windows.Forms.Button();
-            this.JumpSearchTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LinearSearchTextBox = new System.Windows.Forms.TextBox();
+            this.searchStreamsLabel = new System.Windows.Forms.Label();
             this.bucketSortButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -128,31 +128,31 @@
             this.JumpSearchButton.Location = new System.Drawing.Point(725, 325);
             this.JumpSearchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.JumpSearchButton.Name = "JumpSearchButton";
-            this.JumpSearchButton.Size = new System.Drawing.Size(171, 27);
+            this.JumpSearchButton.Size = new System.Drawing.Size(190, 27);
             this.JumpSearchButton.TabIndex = 8;
-            this.JumpSearchButton.Text = "Jump Search\r\n";
+            this.JumpSearchButton.Text = "Streams Linear Search";
             this.JumpSearchButton.UseVisualStyleBackColor = false;
-            this.JumpSearchButton.Click += new System.EventHandler(this.btnSearch_Click);
+            this.JumpSearchButton.Click += new System.EventHandler(this.LenearSearchButton_Click);
             // 
-            // JumpSearchTextBox
+            // LinearSearchTextBox
             // 
-            this.JumpSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.JumpSearchTextBox.Location = new System.Drawing.Point(725, 292);
-            this.JumpSearchTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.JumpSearchTextBox.Name = "JumpSearchTextBox";
-            this.JumpSearchTextBox.Size = new System.Drawing.Size(215, 22);
-            this.JumpSearchTextBox.TabIndex = 9;
+            this.LinearSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LinearSearchTextBox.Location = new System.Drawing.Point(725, 292);
+            this.LinearSearchTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LinearSearchTextBox.Name = "LinearSearchTextBox";
+            this.LinearSearchTextBox.Size = new System.Drawing.Size(215, 22);
+            this.LinearSearchTextBox.TabIndex = 9;
             // 
-            // label1
+            // searchStreamsLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label1.Location = new System.Drawing.Point(722, 263);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(322, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Enter a streams number for jump searching";
+            this.searchStreamsLabel.AutoSize = true;
+            this.searchStreamsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchStreamsLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.searchStreamsLabel.Location = new System.Drawing.Point(722, 263);
+            this.searchStreamsLabel.Name = "searchStreamsLabel";
+            this.searchStreamsLabel.Size = new System.Drawing.Size(322, 17);
+            this.searchStreamsLabel.TabIndex = 10;
+            this.searchStreamsLabel.Text = "Enter a streams number for jump searching";
             // 
             // bucketSortButton
             // 
@@ -172,8 +172,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1283, 515);
             this.Controls.Add(this.bucketSortButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.JumpSearchTextBox);
+            this.Controls.Add(this.searchStreamsLabel);
+            this.Controls.Add(this.LinearSearchTextBox);
             this.Controls.Add(this.JumpSearchButton);
             this.Controls.Add(this.RemoveRowButton);
             this.Controls.Add(this.AddRowButton);
@@ -190,6 +190,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -201,11 +202,9 @@
         private System.Windows.Forms.Label searchSongName;
         private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button RemoveRowButton;
-        private System.Windows.Forms.Button HashSearchButton;
-        private System.Windows.Forms.TextBox HashSsearchTextBox;
         private System.Windows.Forms.Button JumpSearchButton;
-        private System.Windows.Forms.TextBox JumpSearchTextBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox LinearSearchTextBox;
+        private System.Windows.Forms.Label searchStreamsLabel;
         private System.Windows.Forms.Button bucketSortButton;
     }
 }
