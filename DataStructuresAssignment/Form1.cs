@@ -59,28 +59,6 @@ namespace DataStructuresAssignment
             return data;
         }
 
-        private List<string> LoadThirdColumn(string filePath)
-        {
-            List<string> thirdColumnValues = new List<string>();
-            using (var reader = new StreamReader(filePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    string[] values = line.Split(',');
-                    if (values.Length >= 3)
-                    {
-                        // Extract the value in the third column (index 2)
-                        string thirdColumnValue = values[2];
-
-                        // Add the value to the list of third column values
-                        thirdColumnValues.Add(thirdColumnValue);
-                    }
-                }
-            }
-            
-            return thirdColumnValues;
-        }
 
         /* private double JumpSearch(double[] thirdColumnFloats, double searchTerm)
         {
@@ -116,28 +94,6 @@ namespace DataStructuresAssignment
 
             return result; 
         } */
-        
-        private List<string> LinearSearch(List<string[]> data, List<string> thirdColumnValues, string searchTerm)
-        {
-            List<string> result = new List<string>();
-
-            for (int i = 0; i < thirdColumnValues.Count; i++)
-            {
-                try
-                {
-                    if (thirdColumnValues[i] == searchTerm)
-                    {
-                        string[] rowData = data[i];
-                        result.AddRange(rowData);
-                    }
-                }
-                catch (FormatException ex)
-                {
-                    MessageBox.Show($"Error converting value to numeric data type: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            return result;
-        }
 
         private void SearchBwutton_Click(object sender, EventArgs e)
         {
@@ -322,7 +278,7 @@ namespace DataStructuresAssignment
             }
         }
 
-        private void JumpSearchButton_Click(object sender, EventArgs e)
+        /*private void JumpSearchButton_Click(object sender, EventArgs e)
         {
             string searchTerm = JumpSearchTextBox.Text.Trim();
 
@@ -346,7 +302,56 @@ namespace DataStructuresAssignment
             {
                 MessageBox.Show("Please enter a valid number");
             }
+        }*/
+
+
+
+        private List<string> LoadThirdColumn(string filePath)
+        {
+            List<string> thirdColumnValues = new List<string>();
+            using (var reader = new StreamReader(filePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(',');
+                    if (values.Length >= 3)
+                    {
+                        // Extract the value in the third column (index 2)
+                        string thirdColumnValue = values[2];
+
+                        // Add the value to the list of third column values
+                        thirdColumnValues.Add(thirdColumnValue);
+                    }
+                }
+            }
+
+            return thirdColumnValues;
         }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = JumpSearchTextBox.Text;
+            bool found = false;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                string value = row.Cells["Streams (Billions)"].Value.ToString();
+
+                if (value.Equals(searchTerm))
+                {
+                    row.Selected = true;
+                    dataGridView1.CurrentCell = row.Cells[0];
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                MessageBox.Show("Search term not found");
+            }
+        }
+
     }
 }
 

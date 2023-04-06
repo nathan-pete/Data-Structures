@@ -132,7 +132,7 @@
             this.JumpSearchButton.TabIndex = 8;
             this.JumpSearchButton.Text = "Jump Search\r\n";
             this.JumpSearchButton.UseVisualStyleBackColor = false;
-            this.JumpSearchButton.Click += new System.EventHandler(this.JumpSearchButton_Click);
+            this.JumpSearchButton.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // JumpSearchTextBox
             // 
