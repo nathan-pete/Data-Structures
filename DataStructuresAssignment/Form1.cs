@@ -59,7 +59,7 @@ namespace DataStructuresAssignment
             return data;
         }
 
-        private double[] LoadThirdColumn(string filePath)
+        private List<string> LoadThirdColumn(string filePath)
         {
             List<string> thirdColumnValues = new List<string>();
             using (var reader = new StreamReader(filePath))
@@ -78,16 +78,11 @@ namespace DataStructuresAssignment
                     }
                 }
             }
-
-            double[] thirdColumnFloats = new double[thirdColumnValues.Count];
-            for (int i = 0; i < thirdColumnValues.Count; i++)
-            {
-                thirdColumnFloats[i] = double.Parse(thirdColumnValues[i]);
-            }
-            return thirdColumnFloats;
+            
+            return thirdColumnValues;
         }
 
-        private double JumpSearch(double[] thirdColumnFloats, double searchTerm)
+        /* private double JumpSearch(double[] thirdColumnFloats, double searchTerm)
         {
             int dataSize = thirdColumnFloats.Length;
             int stepSize = (int)Math.Sqrt(dataSize);
@@ -119,6 +114,28 @@ namespace DataStructuresAssignment
                 }
             }
 
+            return result; 
+        } */
+        
+        private List<string> LinearSearch(List<string[]> data, List<string> thirdColumnValues, string searchTerm)
+        {
+            List<string> result = new List<string>();
+
+            for (int i = 0; i < thirdColumnValues.Count; i++)
+            {
+                try
+                {
+                    if (thirdColumnValues[i] == searchTerm)
+                    {
+                        string[] rowData = data[i];
+                        result.AddRange(rowData);
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show($"Error converting value to numeric data type: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             return result;
         }
 
@@ -307,22 +324,27 @@ namespace DataStructuresAssignment
 
         private void JumpSearchButton_Click(object sender, EventArgs e)
         {
-            double searchTerm = double.Parse(JumpSearchTextBox.Text);
+            string searchTerm = JumpSearchTextBox.Text.Trim();
 
-            if (!double.IsNaN(searchTerm))
+            if (!string.IsNullOrEmpty(searchTerm))
             {
                 string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-                double[] thirdColumnFloats = LoadThirdColumn(filePath);
-                double result = JumpSearch(thirdColumnFloats, searchTerm);
+                List<string> thirdColumnValues = LoadThirdColumn(filePath);
+                List<string[]> data = LoadCSV(filePath);
+                List<string> result = LinearSearch(data, thirdColumnValues, searchTerm);
                 
-                if (result != 0)
+                if (result != null)
                 {
-                    MessageBox.Show(result.ToString()); //\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
+                    MessageBox.Show($"Song: {result[0]}\nArtist: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");; //\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
                 }
                 else
                 {
                     MessageBox.Show("Not found");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid number");
             }
         }
     }
