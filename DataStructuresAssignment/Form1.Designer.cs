@@ -35,7 +35,7 @@
             this.searchSongName = new System.Windows.Forms.Label();
             this.AddRowButton = new System.Windows.Forms.Button();
             this.RemoveRowButton = new System.Windows.Forms.Button();
-            this.JumpSearchButton = new System.Windows.Forms.Button();
+            this.LinearSearchButton = new System.Windows.Forms.Button();
             this.LinearSearchTextBox = new System.Windows.Forms.TextBox();
             this.searchStreamsLabel = new System.Windows.Forms.Label();
             this.bucketSortButton = new System.Windows.Forms.Button();
@@ -123,18 +123,19 @@
             this.RemoveRowButton.UseVisualStyleBackColor = true;
             this.RemoveRowButton.Click += new System.EventHandler(this.RemoveRowButton_Click);
             // 
-            // JumpSearchButton
+            // LinearSearchButton
             // 
-            this.JumpSearchButton.BackColor = System.Drawing.Color.DarkOrchid;
-            this.JumpSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JumpSearchButton.ForeColor = System.Drawing.Color.White;
-            this.JumpSearchButton.Location = new System.Drawing.Point(1088, 508);
-            this.JumpSearchButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.JumpSearchButton.Name = "JumpSearchButton";
-            this.JumpSearchButton.Size = new System.Drawing.Size(285, 42);
-            this.JumpSearchButton.TabIndex = 8;
-            this.JumpSearchButton.Text = "Streams Linear Search";
-            this.JumpSearchButton.UseVisualStyleBackColor = false;
+            this.LinearSearchButton.BackColor = System.Drawing.Color.DarkOrchid;
+            this.LinearSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LinearSearchButton.ForeColor = System.Drawing.Color.White;
+            this.LinearSearchButton.Location = new System.Drawing.Point(1088, 508);
+            this.LinearSearchButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.LinearSearchButton.Name = "LinearSearchButton";
+            this.LinearSearchButton.Size = new System.Drawing.Size(285, 42);
+            this.LinearSearchButton.TabIndex = 8;
+            this.LinearSearchButton.Text = "Streams Linear Search";
+            this.LinearSearchButton.UseVisualStyleBackColor = false;
+            this.LinearSearchButton.Click += new System.EventHandler(this.LenearSearchButton_Click);
             // 
             // LinearSearchTextBox
             // 
@@ -189,7 +190,7 @@
             this.Controls.Add(this.bucketSortButton);
             this.Controls.Add(this.searchStreamsLabel);
             this.Controls.Add(this.LinearSearchTextBox);
-            this.Controls.Add(this.JumpSearchButton);
+            this.Controls.Add(this.LinearSearchButton);
             this.Controls.Add(this.RemoveRowButton);
             this.Controls.Add(this.AddRowButton);
             this.Controls.Add(this.searchSongName);
@@ -218,7 +219,7 @@
         private System.Windows.Forms.Label searchSongName;
         private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button RemoveRowButton;
-        private System.Windows.Forms.Button JumpSearchButton;
+        private System.Windows.Forms.Button LinearSearchButton;
         private System.Windows.Forms.TextBox LinearSearchTextBox;
         private System.Windows.Forms.Label searchStreamsLabel;
         private System.Windows.Forms.Button bucketSortButton;

@@ -181,9 +181,7 @@ namespace DataStructuresAssignment
                 dataGridView1.Rows.Add(row);
             }
         }
-
-<<<<<<< Updated upstream
-=======
+        
         private void SortByStreamsButton_Click(object sender, EventArgs e)
         {
             string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
@@ -201,47 +199,7 @@ namespace DataStructuresAssignment
                 dataGridView1.Rows.Add(row);
             }
         }
-
-
->>>>>>> Stashed changes
-        /* private List<string> LoadThirdColumn(string filePath)
-        {
-            List<string> thirdColumnValues = new List<string>();
-            using (var reader = new StreamReader(filePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    string[] values = line.Split(',');
-                    if (values.Length >= 3)
-                    {
-                        // Extract the value in the third column (index 2)
-                        string thirdColumnValue = values[2];
-
-                        // Add the value to the list of third column values
-                        thirdColumnValues.Add(thirdColumnValue);
-                    }
-                }
-            }
-
-            return thirdColumnValues;
-        } */
-
-<<<<<<< Updated upstream
-        private void LenearSearch_Click(object sender, EventArgs e)
-        {
-            string searchTerm = LinearSearchTextBox.Text;
-
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                string value = row.Cells["Streams (Billions)"].Value.ToString();
-
-                if (value.Equals(searchTerm))
-                {
-                    row.Selected = true;
-                    dataGridView1.CurrentCell = row.Cells[0];
-                    MessageBox.Show($"Song: {row.Cells[0].Value.ToString()}\nArtist: {row.Cells[1].Value.ToString()}\nStreams (Billions): {row.Cells[2].Value.ToString()}\nRelease Date: {row.Cells[3].Value.ToString()}");
-=======
+        
         private void LenearSearchButton_Click(object sender, EventArgs e)
         {
             string searchTerm = LinearSearchTextBox.Text;
@@ -255,23 +213,17 @@ namespace DataStructuresAssignment
                     currentRow.Selected = true; //highlight the row of the search term
                     dataGridView1.CurrentCell = currentRow.Cells[0];
                     MessageBox.Show($"Song: {currentRow.Cells[0].Value.ToString()}\nArtist: {currentRow.Cells[1].Value.ToString()}\nStreams (Billions): {currentRow.Cells[2].Value.ToString()}\nRelease Date: {currentRow.Cells[3].Value.ToString()}"); //display whole row of the search term
->>>>>>> Stashed changes
                     break;
                 }
                 else
                 {
-<<<<<<< Updated upstream
-                    MessageBox.Show("Search term not found, try again.");
-=======
                     MessageBox.Show("The search result wasn't found, try again.");
->>>>>>> Stashed changes
                     break;
                 }
                 
             }
         }
-<<<<<<< Updated upstream
-        
+
         //Sort the data by streams using bubble sort
         private void StreamSortButton_Click(object sender, EventArgs e)
         {
@@ -316,8 +268,6 @@ namespace DataStructuresAssignment
                 dataGridView1.Rows[x].Cells[2].Value = data[x]; //Sets the 3rd column to the sorted data
             }
         }
-=======
->>>>>>> Stashed changes
     }
 }
 
