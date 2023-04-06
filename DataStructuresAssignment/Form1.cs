@@ -131,7 +131,8 @@ namespace DataStructuresAssignment
                 writer.WriteLine(string.Join(",", newRow));
             }
         }
-
+        
+        /*----------------------------------------------- Remove Row -------------------------------------------------*/
         private void RemoveRowButton_Click(object sender, EventArgs e)
         {
 
@@ -145,6 +146,8 @@ namespace DataStructuresAssignment
                 MessageBox.Show("Please select a row to remove.");
             }
         }
+
+        /*----------------------------------------------- Bucket Sort ------------------------------------------------*/
         private void BucketSortButton_Click(object sender, EventArgs e)
         {
             string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
@@ -182,24 +185,7 @@ namespace DataStructuresAssignment
             }
         }
         
-        private void SortByStreamsButton_Click(object sender, EventArgs e)
-        {
-            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-            List<string[]> data = LoadCSV(filePath);
-
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("Song", "Song");
-            dataGridView1.Columns.Add("Artist", "Artist");
-            dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
-            dataGridView1.Columns.Add("Release Date", "Release Date");
-
-            foreach (string[] row in data)
-            {
-                dataGridView1.Rows.Add(row);
-            }
-        }
-        
+        /*---------------------------------------------- Linear Sort -------------------------------------------------*/
         private void LenearSearchButton_Click(object sender, EventArgs e)
         {
             string searchTerm = LinearSearchTextBox.Text;
@@ -223,8 +209,8 @@ namespace DataStructuresAssignment
                 
             }
         }
-
-        //Sort the data by streams using bubble sort
+        
+        /*---------------------------------------------- Bubble Sort -------------------------------------------------*/
         private void StreamSortButton_Click(object sender, EventArgs e)
         {
             //Reads and store CSV data
