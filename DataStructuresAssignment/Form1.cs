@@ -182,25 +182,6 @@ namespace DataStructuresAssignment
             }
         }
 
-        private void SortByStreamsButton_Click(object sender, EventArgs e)
-        {
-            string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-            List<string[]> data = LoadCSV(filePath);
-
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("Song", "Song");
-            dataGridView1.Columns.Add("Artist", "Artist");
-            dataGridView1.Columns.Add("Streams (Billions)", "Streams (Billions)");
-            dataGridView1.Columns.Add("Release Date", "Release Date");
-
-            foreach (string[] row in data)
-            {
-                dataGridView1.Rows.Add(row);
-            }
-        }
-
-
         /* private List<string> LoadThirdColumn(string filePath)
         {
             List<string> thirdColumnValues = new List<string>();
@@ -247,7 +228,51 @@ namespace DataStructuresAssignment
                 
             }
         }
+        
+        //Sort the data by streams using bubble sort
+        private void StreamSortButton_Click(object sender, EventArgs e)
+        {
+            //Reads and store CSV data
+            List<string> lines = new List<string>();
+            //StreamReader reads the file and dispose of it when done
+            using (StreamReader reader = new StreamReader("Streams.csv")) 
+            {
+                //Saves CSV contents to a lists
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(','); //Splits at the delimiter
+                    lines.Add(values[2]); //Adds 3rd element to the list (Streams column)
+                }
+            }
+            
+            // Convert the strings to floats
+            float[] data = new float[lines.Count];
+            for (int x = 0; x < lines.Count; x++) //Iterates through the list
+            {
+                data[x] = float.Parse(lines[x]); //Converts the string to a float
+            }
 
+            // Bubble sort Algorithm
+            for (int x = 0; x < data.Length - 1; x++)
+            {
+                for (int y = 0; y < data.Length - x - 1; y++)
+                {
+                    if (data[y] > data[y + 1])
+                    {
+                        float temp = data[y];
+                        data[y] = data[y + 1];
+                        data[y + 1] = temp;
+                    }
+                }
+            }
+
+            // Rearrange the WinForm table
+            for (int x = 0; x < dataGridView1.Rows.Count & x < data.Length; x++)
+            {
+                dataGridView1.Rows[x].Cells[2].Value = data[x]; //Sets the 3rd column to the sorted data
+            }
+        }
     }
 }
 
