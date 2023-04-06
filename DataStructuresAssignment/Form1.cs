@@ -59,7 +59,7 @@ namespace DataStructuresAssignment
             return data;
         }
 
-        private List<string> LoadThirdColumn(string filePath)
+        private double[] LoadThirdColumn(string filePath)
         {
             List<string> thirdColumnValues = new List<string>();
             using (var reader = new StreamReader(filePath))
@@ -78,34 +78,47 @@ namespace DataStructuresAssignment
                     }
                 }
             }
-            return thirdColumnValues;
+
+            double[] thirdColumnFloats = new double[thirdColumnValues.Count];
+            for (int i = 0; i < thirdColumnValues.Count; i++)
+            {
+                thirdColumnFloats[i] = double.Parse(thirdColumnValues[i]);
+            }
+            return thirdColumnFloats;
         }
 
-        private string JumpSearch(List<string> thirdColumnValues, string searchTerm)
+        private double JumpSearch(double[] thirdColumnFloats, double searchTerm)
         {
-            int dataSize = thirdColumnValues.Count;
+            int dataSize = thirdColumnFloats.Length;
             int stepSize = (int)Math.Sqrt(dataSize);
-            int prevStep = 0;
-            string result = null;
+            double prevStep = 0;
+            double result = 0;
 
-            while (thirdColumnValues[Math.Min(stepSize, dataSize) - 1].CompareTo(searchTerm) < 0)
+            while (thirdColumnFloats[Math.Min(stepSize, dataSize) - 1] < searchTerm)
             {
                 prevStep = stepSize;
                 stepSize += (int)Math.Sqrt(dataSize);
                 if (prevStep >= dataSize)
                 {
-                    result = null;
                     return result;
                 }
             }
             
-            for (int i = prevStep; i < Math.Min(stepSize, dataSize); i++)
+            for (double i = prevStep; i < searchTerm; i++)
             {
-                if (thirdColumnValues[i] == searchTerm)
+                prevStep++;
+                double p = Math.Min(stepSize, dataSize);
+                if(prevStep == p)
                 {
-                    result = i.ToString();
+                    return result;
+                } 
+                
+                if (prevStep == searchTerm)
+                {
+                    result = prevStep;
                 }
             }
+
             return result;
         }
 
@@ -294,17 +307,17 @@ namespace DataStructuresAssignment
 
         private void JumpSearchButton_Click(object sender, EventArgs e)
         {
-            string searchTerm = JumpSearchTextBox.Text.Trim();
+            double searchTerm = double.Parse(JumpSearchTextBox.Text);
 
-            if (!string.IsNullOrEmpty(searchTerm))
+            if (!double.IsNaN(searchTerm))
             {
                 string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-                List<string> thirdColumnValues = LoadThirdColumn(filePath);
-                string result = JumpSearch(thirdColumnValues, searchTerm);
+                double[] thirdColumnFloats = LoadThirdColumn(filePath);
+                double result = JumpSearch(thirdColumnFloats, searchTerm);
                 
-                if (result != null)
+                if (result != 0)
                 {
-                    MessageBox.Show($"Artist: {result[0]}"); //\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
+                    MessageBox.Show(result.ToString()); //\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
                 }
                 else
                 {
