@@ -1,10 +1,16 @@
-*.idea/
-*/shelf/
-*/workspace.xml
-*/contentModel.xml
-*/projectSettingsUpdater.xml
-*/modules.xml
-*/httpRequests/
-*/dataSources/
-*/dataSources.local.xml
+/.idea
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.DataStructuresAssignment.iml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
 
+.idea/.idea.DataStructuresAssignment/.idea/workspace.xml
