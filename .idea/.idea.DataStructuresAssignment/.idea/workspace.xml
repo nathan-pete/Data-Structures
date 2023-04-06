@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/DataStructuresAssignment/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructuresAssignment/Form1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataStructuresAssignment/bin/Debug/DataStructuresAssignment.exe" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructuresAssignment/bin/Debug/DataStructuresAssignment.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataStructuresAssignment/bin/Debug/DataStructuresAssignment.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructuresAssignment/bin/Debug/DataStructuresAssignment.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStructuresAssignment/obj/Debug/DataStructuresAssignment.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructuresAssignment/obj/Debug/DataStructuresAssignment.csproj.GenerateResource.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataStructuresAssignment/obj/Debug/DataStructuresAssignment.exe" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructuresAssignment/obj/Debug/DataStructuresAssignment.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataStructuresAssignment/obj/Debug/DataStructuresAssignment.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructuresAssignment/obj/Debug/DataStructuresAssignment.pdb" afterDir="false" />
     </list>
@@ -81,6 +82,9 @@
       <updated>1680736174568</updated>
       <workItem from="1680736223907" duration="5138000" />
       <workItem from="1680781402718" duration="8179000" />
+      <workItem from="1680792439387" duration="1906000" />
+      <workItem from="1680794494000" duration="160000" />
+      <workItem from="1680795039952" duration="499000" />
     </task>
     <servers />
   </component>

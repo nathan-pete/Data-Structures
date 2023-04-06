@@ -331,7 +331,7 @@ namespace DataStructuresAssignment
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchTerm = JumpSearchTextBox.Text;
-            bool found = false;
+            //bool isFound = false;
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -341,14 +341,15 @@ namespace DataStructuresAssignment
                 {
                     row.Selected = true;
                     dataGridView1.CurrentCell = row.Cells[0];
-                    found = true;
+                    MessageBox.Show($"Song: {row.Cells[0].Value.ToString()}\nArtist: {row.Cells[1].Value.ToString()}\nStreams (Billions): {row.Cells[2].Value.ToString()}\nRelease Date: {row.Cells[3].Value.ToString()}");
                     break;
                 }
-            }
-
-            if (!found)
-            {
-                MessageBox.Show("Search term not found");
+                else
+                {
+                    MessageBox.Show("Search term not found, try again.");
+                    break;
+                }
+                
             }
         }
 
