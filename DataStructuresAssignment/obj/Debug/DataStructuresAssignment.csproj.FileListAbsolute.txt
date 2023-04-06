@@ -50,3 +50,6 @@ C:\Users\Nathan\Desktop\NHL Stenden\Data-Structures\DataStructuresAssignment\obj
 C:\Users\Nathan\Desktop\NHL Stenden\Data-Structures\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.csproj.CoreCompileInputs.cache
 C:\Users\Nathan\Desktop\NHL Stenden\Data-Structures\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.exe
 C:\Users\Nathan\Desktop\NHL Stenden\Data-Structures\DataStructuresAssignment\obj\Debug\DataStructuresAssignment.pdb
+D:\School\University\Year 2\Data-Structures\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.exe.config
+D:\School\University\Year 2\Data-Structures\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.exe
+D:\School\University\Year 2\Data-Structures\DataStructuresAssignment\bin\Debug\DataStructuresAssignment.pdb

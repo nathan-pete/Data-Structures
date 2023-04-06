@@ -17,7 +17,6 @@ namespace DataStructuresAssignment
     public partial class Form1 : Form
 
     {
-        private Hashtable table;
         public Form1()
         {
             InitializeComponent();
@@ -58,6 +57,56 @@ namespace DataStructuresAssignment
             data.Sort((x, y) => string.Compare(x[0], y[0], StringComparison.OrdinalIgnoreCase));
 
             return data;
+        }
+
+        private List<string> LoadThirdColumn(string filePath)
+        {
+            List<string> thirdColumnValues = new List<string>();
+            using (var reader = new StreamReader(filePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(',');
+                    if (values.Length >= 3)
+                    {
+                        // Extract the value in the third column (index 2)
+                        string thirdColumnValue = values[2];
+
+                        // Add the value to the list of third column values
+                        thirdColumnValues.Add(thirdColumnValue);
+                    }
+                }
+            }
+            return thirdColumnValues;
+        }
+
+        private string JumpSearch(List<string> thirdColumnValues, string searchTerm)
+        {
+            int dataSize = thirdColumnValues.Count;
+            int stepSize = (int)Math.Sqrt(dataSize);
+            int prevStep = 0;
+            string result = null;
+
+            while (thirdColumnValues[Math.Min(stepSize, dataSize) - 1].CompareTo(searchTerm) < 0)
+            {
+                prevStep = stepSize;
+                stepSize += (int)Math.Sqrt(dataSize);
+                if (prevStep >= dataSize)
+                {
+                    result = null;
+                    return result;
+                }
+            }
+            
+            for (int i = prevStep; i < Math.Min(stepSize, dataSize); i++)
+            {
+                if (thirdColumnValues[i] == searchTerm)
+                {
+                    result = i.ToString();
+                }
+            }
+            return result;
         }
 
         private void SearchBwutton_Click(object sender, EventArgs e)
@@ -203,64 +252,8 @@ namespace DataStructuresAssignment
             }
         }
         */
-        private void CreateHashTable(List<string[]> data)
-        {
-            int tableSize = data.Count;
-            Hashtable table = new Hashtable(tableSize);
 
-            for (int i = 0; i < data.Count; i++) 
-            { 
-                string[] fields = data[i];
-                string key = fields[0]; 
-                int hash = GetHash(key, tableSize); 
 
-                //Collision control
-                while (table.ContainsKey(hash)) // Check if the hash value is already in the table
-                { 
-                    hash = (hash + 1) % tableSize; // If the hash value is in the table look for the next free spot 
-                }
-
-                table[hash] = data[i]; // Add key-value pair to the hash table
-            }
-        }
-
-        private int GetHash(string key, int tableSize) 
-        {
-            int hash = 0;
-            for (int i = 0; i < key.Length; i++) // Loop through each character in the key
-            {
-                hash = (hash << 5) + hash + key[i];
-            }
-            return Math.Abs(hash) % tableSize; // Ensure that the hash value falls within the range of the table size
-        }
-
-        private string[] HashTableSearch(List<string[]> data, string searchTerm)
-        {
-            int tableSize = data.Count;
-            int searchHash = GetHash(searchTerm, tableSize); // Get the hash value for the string
-            string[] result = null;
-
-            // Finding the key
-            while (table.ContainsKey(searchHash)) // Check if the hash value is in the table
-            { 
-                string[] fields = ((string)table[searchHash]).Split(','); 
-                if (fields[0] == searchTerm)  // Check if the first field matches the search string !!!!!!!!!!!!!!!!!! 
-                { 
-                    result = (string[])table[searchHash];
-                    return  result; 
-                }
-                else
-                {
-                    searchHash = (searchHash + 1) % tableSize; // Increments the hash value so that the next iteration of the loop checks the next index in the hash table
-                }
-            }
-            return null;
-        }
-
-// TODO: has a specific column (search a specific Column)
-// TODO: Figure out what to do with the hash tabel intialization 
-// TODO: See if the button for showing different fields of the result works
-// TODO: Make the correspesponding information to the search be shown as a result (song search shows artist too)
 
         private void BubbleSort(List<string[]> data)
         {
@@ -299,17 +292,16 @@ namespace DataStructuresAssignment
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void JumpSearchButton_Click(object sender, EventArgs e)
         {
-            string searchTerm = SearchTextBox.Text.Trim();
+            string searchTerm = JumpSearchTextBox.Text.Trim();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 string filePath = Path.Combine(Application.StartupPath, "Streams.csv");
-                List<string[]> data = LoadCSV(filePath);
-
-                string[] result = HashTableSearch(data, searchTerm);
-
+                List<string> thirdColumnValues = LoadThirdColumn(filePath);
+                string result = JumpSearch(thirdColumnValues, searchTerm);
+                
                 if (result != null)
                 {
                     MessageBox.Show($"Artist: {result[0]}"); //\nSong: {result[1]}\nStreams (Billions): {result[2]}\nRelease Date: {result[3]}");
