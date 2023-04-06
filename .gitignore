@@ -1,0 +1,10 @@
+*.idea/
+*/shelf/
+*/workspace.xml
+*/contentModel.xml
+*/projectSettingsUpdater.xml
+*/modules.xml
+*/httpRequests/
+*/dataSources/
+*/dataSources.local.xml
+
